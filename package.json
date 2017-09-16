@@ -1,0 +1,26 @@
+{
+  "name": "nodepop",
+  "version": "1.0.0",
+  "description": "Aplicación de compra venta de cosas",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.15.4",
+    "body-parser": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vik000/nodepop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vik000/nodepop/issues"
+  },
+  "homepage": "https://github.com/vik000/nodepop#readme"
+}
