@@ -23,5 +23,16 @@ app.get('/api/spots',(req,res)=>{
   });
 });
 
+app.get('/api/spots/:id',(req,res)=>{
+  const id = req.params.id;
+  Spot.getSpotById(id,function (err,spot) {
+    if(err){
+      throw err;
+    }
+    res.json(spot);
+  });
+});
+
+
 app.listen(3000);
 console.log('running on port 3000');

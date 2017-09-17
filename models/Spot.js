@@ -33,3 +33,8 @@ var Spot = module.exports = mongoose.model('Spot',spotSchema); //en teoría no h
 module.exports.getSpots=function(callback,limit){
   Spot.find(callback).limit(limit);
 }
+
+//Función get por id:
+module.exports.getSpotById=function(id,callback){
+  Spot.findById(id,callback);
+}
