@@ -3,7 +3,10 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+app.use(bodyParser.json());
+
 Spot = require('./models/Spot');
+Tag = require('./models/Tags');
 
 //Connect to Mongoose:
 require('./lib/connectMongoose');
@@ -33,6 +36,37 @@ app.get('/api/spots/:id',(req,res)=>{
   });
 });
 
+app.post('/api/spots',(req,res)=>{
+  var spot = req.body;
+  Spot.addSpot(function (err,spot) {
+    if(err){
+      throw err;
+    }
+    res.json(spot);
+  });
+});
+
+app.get('/api/tags',(req,res)=>{
+  Tag.getTag(function (err,tags) {
+    if(err){
+      throw err;
+    }
+    res.json(tags);
+  });
+});
+
+app.post('/api/tags',(req,res)=>{
+  var tag=req.body;
+  console.log(tag);
+  Tag.create(function(err,tag){
+    if(err){
+      throw err;
+    }
+    res.json(tag);
+  });
+});
 
 app.listen(3000);
 console.log('running on port 3000');
+
+module.exports = app;

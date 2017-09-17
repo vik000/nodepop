@@ -14,7 +14,8 @@ const spotSchema = mongoose.Schema({
     type:String
   },
   tag:{$in:["work","lifestyle","motor","mobile"]}
-},{
+},
+{
   collection:'spots' //para elegir nosotro cómo se llama la colección en la base de datos.
 });
 
@@ -37,4 +38,9 @@ module.exports.getSpots=function(callback,limit){
 //Función get por id:
 module.exports.getSpotById=function(id,callback){
   Spot.findById(id,callback);
+}
+
+//Función crear spot:
+module.exports.addSpot=function(spot,callback){
+  Spot.create(spot,callback);
 }
