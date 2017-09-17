@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+Spot = require('./models/Spot');
+
 //Connect to Mongoose:
 require('./lib/connectMongoose');
 // mongoose.connect('mongodb://localhost/nodepop');
@@ -10,6 +12,15 @@ require('./lib/connectMongoose');
 
 app.get('/',(req,res)=>{
   res.send('Hello World');
+});
+
+app.get('/api/spots',(req,res)=>{
+  Spot.getSpots(function (err,spots) {
+    if(err){
+      throw err;
+    }
+    res.json(spots);
+  });
 });
 
 app.listen(3000);
