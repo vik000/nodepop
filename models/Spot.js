@@ -8,12 +8,12 @@ const spotSchema = mongoose.Schema({
     type:String,
     index:true
   },
-  offer:{$in:["buy","sell"]},
+  offer:{type:String},
   price:Number,
   pic:{
     type:String
   },
-  tag:{$in:["work","lifestyle","motor","mobile"]}
+  tag:{type:String}
 },
 {
   collection:'spots' //para elegir nosotro cómo se llama la colección en la base de datos.

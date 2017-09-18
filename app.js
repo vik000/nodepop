@@ -37,16 +37,6 @@ app.get('/api/spots/:id',(req,res)=>{
   });
 });
 
-app.post('/api/spots',(req,res)=>{
-  var spot = req.body;
-  Spot.addSpot(function (err,spot) {
-    if(err){
-      throw err;
-    }
-    res.json(spot);
-  });
-});
-
 app.get('/api/tags',(req,res)=>{
   Tag.getTag(function (err,tags) {
     if(err){
@@ -64,6 +54,17 @@ app.post('/api/tags',(req,res)=>{
       throw err;
     }
     res.json(tag);
+  });
+});
+
+app.post('/api/spots',(req,res)=>{
+  var spot = req.body;
+  console.log(spot);
+  Spot.create(spot,function (err,spot) {
+    if(err){
+      throw err;
+    }
+    res.json(spot);
   });
 });
 
