@@ -41,6 +41,13 @@ module.exports.getSpotById=function(id,callback){
 }
 
 //Función crear spot:
-module.exports.addSpot=function(spot,callback){
-  Spot.create(spot,callback);
+module.exports.addSpot=function(callback,spot){
+  Spot.create(spot, function(err,callback){
+    if(err){
+      console.log('Error',err);
+      next(err);
+      return;
+    }
+    res.json(spot);
+  });
 }
