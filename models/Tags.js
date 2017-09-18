@@ -25,6 +25,7 @@ module.exports.getTag=function(callback,limit){
 }
 
 //Función para add tags:
-module.exports.addTag=function(callback,tag){
-  Tag.save(tag, callback);
+module.exports.addTag=function(callback,data){
+  const tag = new Tag(data);
+  tag.save(callback);
 }

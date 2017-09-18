@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 Spot = require('./models/Spot');
 Tag = require('./models/Tags');
@@ -58,12 +59,12 @@ app.get('/api/tags',(req,res)=>{
 app.post('/api/tags',(req,res)=>{
   var tag=req.body;
   console.log(tag);
-  Tag.create(function(err,tag){
+  Tag.addTag(function(err,tag){
     if(err){
       throw err;
     }
     res.json(tag);
-  });
+  }, tag);
 });
 
 app.listen(3000);
